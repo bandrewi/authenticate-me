@@ -5,11 +5,6 @@ const usersRouter = require('./users.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
-//test route
-router.post('/test', function (req, res) {
-    res.json({ requestBody: req.body });
-});
-
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth.js');
