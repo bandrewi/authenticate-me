@@ -29,11 +29,12 @@ export const login = (user) => async (dispatch) => {
     return res;
 }
 
-export const restoreUser = () => async (dispatch) => {
-    const res = await csrfFetch('/api/session')
-    const data = await res.json()
-    return res;
-}
+export const restoreUser = () => async dispatch => {
+    const response = await csrfFetch('/api/session');
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+};
 
 export const signup = (user) => async (dispatch) => {
     const { username, email, password } = user
