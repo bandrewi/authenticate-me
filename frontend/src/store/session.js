@@ -44,7 +44,15 @@ export const signup = (user) => async (dispatch) => {
     })
     const newUser = await res.json()
     dispatch(setUser(newUser.user))
-    return newUser
+    return res
+}
+
+export const logout = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session', {
+        method: 'DELETE',
+    })
+    dispatch(removeUser())
+    return res
 }
 
 const initialiedState = { user: null }
